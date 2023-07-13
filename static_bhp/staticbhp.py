@@ -1,6 +1,8 @@
 import pandas as pd
-from ErrorMessage import err_msg
-from PseudoreducedProperties import *
+from physical_properties.conversions import evaluate_scrhs
+from physical_properties.pseudocritical_properties import natural_gas_systems2
+from physical_properties.pseudoreduced_properties import pseudo_reduced_wellhead_pressure
+from physical_properties.error_message import err_msg
 
 
 df = pd.read_csv('sukkarcornelintegral.csv')
@@ -23,11 +25,9 @@ if decision.upper() == "YES":
         """Function to display sukkar and cornell
         table of integral-head
 
-
         Return:
             dataframe: for the first fifty one rows
         """
-
         return df.head(51)
 
 
@@ -39,12 +39,10 @@ if decision.upper() == "YES":
         """Function to display sukkar and cornell
         table of integral-tail
 
-
         Return:
             dataframe: for the last forty nine rows
 
         """
-
         return df.tail(49)
 
 
@@ -76,27 +74,21 @@ if decision.upper() == "YES":
         """Function to interpolate sukkar and cornell
         integral value
 
-
         Return:
             i_integral_value(floats): interpolated integral value
-
         """
-
         i_integral_value = sciv_above - ((a / a2) * b)
-
         return i_integral_value
 
 
     def real_integral_value():
         """Function to calculate real integral value
 
-
         Return:
             real_value(floats): Difference btw interpolated value and
             the sukkar and cornell integral-RHS
 
         """
-
         real_value = interpolated_integral_value() - evaluate_scrhs()
         return real_value
 
@@ -131,15 +123,12 @@ if decision.upper() == "YES":
         """Function to compute reduced
         bottom hole pressure
 
-
         Return:
             floats: pseudo_reduced BHP rounded to
             three decimal places
 
         """
-
         reduced_bhp = ppr_of_upper_value_integral - (i / i2) * pr
-
         return round(reduced_bhp, 3)
 
 
@@ -147,15 +136,12 @@ if decision.upper() == "YES":
         """Function to compute the
         Static Bottom Hole Pressure
 
-
         Return:
             pws(floats): The static BHP rounded to 3
             decimal places
 
         """
-
         pws = pseudo_reduced_bhp() * natural_gas_systems2()
-
         return f"The static_bhp is:{round(pws, 3)} psia"
 
 
@@ -207,29 +193,21 @@ elif decision.upper() == "NO":
         """Function to interpolate sukkar and cornell
         integral value
 
-
         Return:
         i_integral_value(floats): interpolated integral value
-
         """
-
         i_integral_value = sciv_above - ((a / a2) * b)
-
         return i_integral_value
 
 
     def real_integral_value():
         """Function to calculate real integral value
 
-
         Return:
             real_value(floats): Difference btw interpolated value and
             the sukkar and cornell integral-RHS
-
         """
-
         real_value = interpolated_integral_value() - evaluate_scrhs()
-
         return real_value
 
 
@@ -258,15 +236,11 @@ elif decision.upper() == "NO":
         """Function to compute reduced
         bottom hole pressure
 
-
         Return:
             floats: pseudo-reduced BHP rounded to
             three decimal places
-
         """
-
         reduced_bhp = ppr_of_upper_value_integral - (i / i2) * pr
-
         return round(reduced_bhp, 3)
 
 
