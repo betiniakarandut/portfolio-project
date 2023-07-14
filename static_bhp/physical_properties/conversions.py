@@ -10,14 +10,11 @@ temp_avg_sys = float(input('what is the average temp in fahrenheit? '))
 def temp_avg_in_rankine():
     """Function to calculate temperature in degrees rankine
 
-
     Return:
         floats: Temperature in degrees rankine
 
     """
-
     value = f"{460 + temp_avg_sys}"
-
     return value
 
 
@@ -33,9 +30,6 @@ def evaluate_scrhs():
 
     Return:
         floats: sukkar and cornell integral-RHS
-
     """
-
     scrhs = (0.01875 * float(gas_specific_gravity * well_depth)) / float(temp_avg_in_rankine())
-
     return scrhs
