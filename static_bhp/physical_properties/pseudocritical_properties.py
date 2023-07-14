@@ -1,4 +1,4 @@
-from physical_properties.conversions import gas_specific_gravity
+from conversions import gas_specific_gravity
 # Calculating pseudocritical temperature and pressure
 
 def natural_gas_systems():
