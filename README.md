@@ -8,7 +8,7 @@ _Stick up for updates!_
 
 ## Overview of package
 
-./assets/bhppackage.png
+<p><img src="./assets/bhppackage.png"/></p>
 
 ## Files :pencil:
 
