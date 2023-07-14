@@ -20,7 +20,7 @@ _Stick up for updates!_
 
 ## Author
 
-- [betiniakarandut](https://www.github.com/betiniakarandut)
+- Github: [betiniakarandut](https://www.github.com/betiniakarandut)
 - LinkedIn: [betini-akarandut](https://www.linkedin.com/in/betini-akarandut-24654321a)
 - Tweeter: [@betiniakarandut](https://twitter.com/betiniakarandut)
 - alx-Holberton Student
