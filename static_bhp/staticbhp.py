@@ -1,5 +1,5 @@
 import pandas as pd
-from physical_properties.conversions import evaluate_scrhs
+from physical_properties.conversions import evaluate_scrhs, gas_specific_gravity
 from physical_properties.pseudocritical_properties import natural_gas_systems2
 from physical_properties.pseudoreduced_properties import pseudo_reduced_wellhead_pressure
 from physical_properties.error_message import err_msg
@@ -25,7 +25,7 @@ if decision.upper() == "YES":
         """Function to display sukkar and cornell
         table of integral-head
 
-        Return:
+        Return
             dataframe: for the first fifty one rows
         """
         return df.head(51)
