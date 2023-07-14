@@ -3,7 +3,7 @@
 ## Description :house:
 
 This is my portfolio project at the end of the foundation phase in the ROADMAP to becoming a software engineer.
-In this project, I discovered a pressing need amongst the natural gas engineering students and that was calculating static bottom hole pressure of a gas well. So, I took it upon myself to come up with a kind of desktop application that can answer this need but using the SUKKAR and CORNELL integral method. This will be a very user friendly, light weight application.
+In this project, I discovered a pressing need amongst the natural gas engineering students and that was calculating static bottom hole pressure of a gas well. So, I took it upon myself to come up with a kind of desktop application that can answer this need but using the SUKKAR and CORNELL integral method. This will be a very user friendly, light weight application.<br>
 _Stick up for updates!_
 
 ## Overview of package
