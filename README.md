@@ -38,6 +38,9 @@ This package requires:
 
 <p><img src="./assets/bhppackage.png"/></p>
 
+<p><h2>Deployment and usage Overview</h2></p>
+<p><img src="finalbreathe.png"/></p>
+
 ## Files :pencil:
 
 | file                     | Description                                                       |
