@@ -43,11 +43,11 @@ This package requires:
 
 ## Files :pencil:
 
-| file                     | Description                                                       |
-| ------------------------ | ----------------------------------------------------------------- |
-| physical_properties      | Folder containing modules for the physical properties of gas well |
-| staticbhp.py             | module that calculates static bottom hole pressure of gas well    |
-| sukkarcornelintegral.csv | A table containing integral constants at certain Tpr and Ppr      |
+| file                                                     | Description                                                       |
+| -------------------------------------------------------- | ----------------------------------------------------------------- |
+| [physical_properties](./static_bhp/physical_properties/) | Folder containing modules for the physical properties of gas well |
+| [staticbhp.py](./static_bhp/staticbhp.py)                | module that calculates static bottom hole pressure of gas well    |
+| sukkarcornelintegral.csv                                 | A table containing integral constants at certain Tpr and Ppr      |
 
 ## Author
 
