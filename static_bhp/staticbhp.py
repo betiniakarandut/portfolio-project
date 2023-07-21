@@ -60,10 +60,10 @@ if decision.upper() == "YES":
 
     #     First interpolation to compute the sukkar and cornell integral value
 
-    ppr_above = float(input("what is the value of CELL ABOVE 'Ppr'? "))
-    ppr_below = float(input("what is the value of CELL BELOW 'Ppr'? "))
-    sciv_above = float(input("what is the sukkarcornel integral value corresponding to 'value of CELL ABOVE Ppr'? "))
-    sciv_below = float(input("what is the sukkarcornel integral value corresponding to 'value of CELL BELOW Ppr'? "))
+    ppr_above = float(input("what is the value of cell ABOVE 'Ppr'? "))
+    ppr_below = float(input("what is the value of cell BELOW 'Ppr'? "))
+    sciv_above = float(input("what is the sukkarcornel integral value corresponding to 'value of cell ABOVE Ppr'? "))
+    sciv_below = float(input("what is the sukkarcornel integral value corresponding to 'value of cell BELOW Ppr'? "))
 
     a = ppr_above - pseudo_reduced_wellhead_pressure()
     a2 = ppr_above - ppr_below
@@ -101,16 +101,16 @@ if decision.upper() == "YES":
 
     #     Second interpolation to compute reduced pressure at real integral value
 
-    upper_value_integral = float(input('what is the integral value of CELL ABOVE '
+    upper_value_integral = float(input('what is the integral value of cell ABOVE '
                                     '"sukkar and cornel integral value"? '))
-    lower_value_integral = float(input('what is the integral value of CELL BELOW '
+    lower_value_integral = float(input('what is the integral value of cell BELOW '
                                     '"sukkar and cornel integral value"? '))
     ppr_of_upper_value_integral = float(
         input('what is the value of Ppr corresponding to integral value of '
-            'CELL ABOVE "sukkar and cornel integral value"? '))
+            'cell ABOVE "sukkar and cornel integral value"? '))
     ppr_of_lower_value_integral = float(
         input('what is the value of Ppr corresponding to integral value of '
-            'CELL BELOW "sukkar and cornel integral value"? '))
+            'cell BELOW "sukkar and cornel integral value"? '))
 
     i = upper_value_integral - real_integral_value()
 
