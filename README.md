@@ -26,7 +26,7 @@ This package requires:
 ## <h2>Usage</h2>:
 
 - First meet the requirements in the _dependencies_.
-- Open your terminal or command prompt and pip install the package using the command **_pip install static-bhp_**.
+- Open your terminal or command prompt and pip install the package using the command<br>**_pip install static-bhp_**
 - Import the package as follows:
   - from static_bhp import static_bhp
   - Fill in the data required
