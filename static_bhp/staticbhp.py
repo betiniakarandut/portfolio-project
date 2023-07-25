@@ -126,7 +126,6 @@ if decision.upper() == "YES":
         Return:
             floats: pseudo_reduced BHP rounded to
             three decimal places
-
         """
         reduced_bhp = ppr_of_upper_value_integral - (i / i2) * pr
         return round(reduced_bhp, 3)
@@ -162,12 +161,9 @@ elif decision.upper() == "NO":
         """Function to display sukkar and cornell
         table of integral-head
 
-
         Return:
             dataframe: for the first forty five rows
-
         """
-
         return df2.head(45)
 
 
@@ -248,15 +244,12 @@ elif decision.upper() == "NO":
         """Function to compute the
         Static Bottom Hole Pressure
 
-
         Return:
             pws(floats): The static BHP rounded to 3
             decimal places
 
         """
-
         pws = pseudo_reduced_bhp() * natural_gas_systems2()
-
         return f"The static_BHP is:{round(pws, 3)} psia"
 
 
