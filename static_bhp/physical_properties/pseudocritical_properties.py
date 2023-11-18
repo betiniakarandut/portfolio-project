@@ -1,5 +1,5 @@
+"""Module for computing pseudo critical properties of gas well"""
 from conversions import gas_specific_gravity
-# Calculating pseudocritical temperature and pressure
 
 def natural_gas_systems():
     """Function to calculate pseudocritical

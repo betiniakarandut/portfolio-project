@@ -1,12 +1,12 @@
 import pandas as pd
-from physical_properties.conversions import evaluate_scrhs
-from physical_properties.pseudocritical_properties import natural_gas_systems2
-from physical_properties.pseudoreduced_properties import pseudo_reduced_wellhead_pressure
-from physical_properties.error_message import err_msg
+from conversions import evaluate_scrhs
+from pseudocritical_properties import natural_gas_systems2
+from pseudoreduced_properties import pseudo_reduced_wellhead_pressure
+from error_message import err_msg
 
 
-df = pd.read_csv('sukkarcornelintegral.csv')
-df2 = pd.read_csv('sukkarcornellintegral2.csv')
+df = pd.read_csv('../sukkarcornelintegral.csv')
+df2 = pd.read_csv('../sukkarcornellintegral2.csv')
 
 
 # Block for calculating static BHP for REDUCED PRESSURE GREATER THAN 2.0 or PRESSURE ABOVE 2000

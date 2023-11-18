@@ -1,3 +1,4 @@
+""""Module to compute pseudo reduced properties"""
 from conversions import temp_avg_in_rankine
 from pseudocritical_properties import natural_gas_systems, natural_gas_systems2
 

@@ -1,4 +1,4 @@
-#  Calculate well_depth or height
+"""Module for conversion.py"""
 
 well_depth = float(input('What is the well depth? '))
 
