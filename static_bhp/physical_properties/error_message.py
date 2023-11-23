@@ -8,4 +8,4 @@ def err_msg():
     err = "PLEASE I DON'T UNDERSTAND THAT. RERUN AND ENTER A VALID COMMAND"
     return err
 
-print(err_msg())
+# print(err_msg())

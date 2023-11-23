@@ -34,9 +34,9 @@ def pseudo_reduced_wellhead_pressure():
 input('using the values of Tpr and Ppr displayed below. Goto sukkarcornel integral'
       'table and read the value of the CELL. Type "ok" to see Tr and Pr values- ')
 
-print('')
-print('<-------------------------------------->')
-print(f"PSEUDOREDUCED TEMP(Tpr) = {pseudo_reduced_temp()}")
-print(f"PSEUDOREDUCED PRESSURE(Ppr) = {pseudo_reduced_wellhead_pressure()}")
-print('<-------------------------------------->')
-print('')
+# print('')
+# print('<-------------------------------------->')
+# print(f"PSEUDOREDUCED TEMP(Tpr) = {pseudo_reduced_temp()}")
+# print(f"PSEUDOREDUCED PRESSURE(Ppr) = {pseudo_reduced_wellhead_pressure()}")
+# print('<-------------------------------------->')
+# print('')
