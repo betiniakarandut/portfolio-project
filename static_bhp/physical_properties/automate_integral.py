@@ -69,8 +69,26 @@ def interpolated_ppr():
     value_2 = value_of_cell_above_ppr() - value_of_cell_below_ppr()
     return value_1 / value_2
 
-df['pseudoreduced_pressures'][]
-print(interpolated_ppr())
+# locate sukkar cornell integral in the csv file
+def sciv_for_cell_above_ppr():
+    target_ppr_index = locate_cell_with_ppr() - 1
+    target_tpr_index = 2
+    target_value = df.iloc[target_ppr_index, target_tpr_index]
+    return target_value
+
+
+def sciv_for_cell_below_ppr():
+    target_ppr_index = locate_cell_with_ppr() + 1
+    target_tpr_index = 2
+    target_value = df.iloc[target_ppr_index, target_tpr_index]
+    return target_value
+print(sciv_for_cell_below_ppr())
+
+def sciv_for_ppr_cell():
+    target_ppr_index = locate_cell_with_ppr()
+    target_tpr_index = 2
+    target_value = df.iloc[target_ppr_index, target_tpr_index]
+    return target_value
 
 # print(f"Found it to be equal with the ppr above: {locate_cell_with_ppr()}")
 # isna_values = df['pseudoreduced_pressures'].isna()
