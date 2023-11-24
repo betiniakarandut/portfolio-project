@@ -82,13 +82,25 @@ def sciv_for_cell_below_ppr():
     target_tpr_index = 2
     target_value = df.iloc[target_ppr_index, target_tpr_index]
     return target_value
-print(sciv_for_cell_below_ppr())
+# print(sciv_for_cell_below_ppr())
 
 def sciv_for_ppr_cell():
     target_ppr_index = locate_cell_with_ppr()
     target_tpr_index = 2
     target_value = df.iloc[target_ppr_index, target_tpr_index]
     return target_value
+
+def compute_denominator_sciv():
+    res = sciv_for_cell_above_ppr() - sciv_for_cell_below_ppr()
+    return res
+
+def compute_the_value_of_unknown_sciv():
+    computed_ppr = sciv_for_cell_above_ppr() * (compute_denominator_sciv() * interpolated_ppr())
+    return computed_ppr
+
+print(compute_denominator_sciv())
+
+
 
 # print(f"Found it to be equal with the ppr above: {locate_cell_with_ppr()}")
 # isna_values = df['pseudoreduced_pressures'].isna()
