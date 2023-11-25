@@ -63,8 +63,15 @@ if decision.upper() == "YES":
         "what is the sukkarcornel integral value corresponding to 'value of cell BELOW Ppr'? "))
 
     a = ppr_above - pseudo_reduced_wellhead_pressure()
+    print("a: ", a)
+    print("pseudo_reduced_wellhead_pressure(): ", pseudo_reduced_wellhead_pressure())
     a2 = ppr_above - ppr_below
+    print("a2: ", a2)
     b = sciv_above - sciv_below
+    print("sciv_above: ", sciv_above)
+    print("b: ", b)
+    a_b = a / a2
+    print("a_b : ", a_b)
 
     def interpolated_integral_value():
         """Function to interpolate sukkar and cornell
@@ -73,8 +80,9 @@ if decision.upper() == "YES":
         Return:
             i_integral_value(floats): interpolated integral value
         """
-        i_integral_value = sciv_above - ((a / a2) * b)
+        i_integral_value = sciv_above - ( a_b * b)
         return i_integral_value
+    print("integral_value: ", interpolated_integral_value())
 
     def real_integral_value():
         """Function to calculate real integral value

@@ -57,17 +57,21 @@ cell_below_ppr = locate_cell_with_ppr() + 1
 def value_of_cell_above_ppr():
     cell_above_ppr = locate_cell_with_ppr() - 1
     return df['pseudoreduced_pressures'][cell_above_ppr]
+print("Cell value above ppr: ", value_of_cell_above_ppr())
 
 
 def value_of_cell_below_ppr():
     cell_below_ppr = locate_cell_with_ppr() + 1
     return df['pseudoreduced_pressures'][cell_below_ppr]
-
+print("This cell above ppr: ", value_of_cell_below_ppr())
 
 def interpolated_ppr():
     value_1 = value_of_cell_above_ppr() - pseudo_reduced_wellhead_pressure()
     value_2 = value_of_cell_above_ppr() - value_of_cell_below_ppr()
-    return value_1 / value_2
+    res = value_1 / value_2
+    return res
+print("The cal ppr is: ", interpolated_ppr())
+print("pseudo_reduced_wellhead_pressure(): ", pseudo_reduced_wellhead_pressure())
 
 # locate sukkar cornell integral in the csv file
 def sciv_for_cell_above_ppr():
@@ -75,6 +79,7 @@ def sciv_for_cell_above_ppr():
     target_tpr_index = 2
     target_value = df.iloc[target_ppr_index, target_tpr_index]
     return target_value
+print("sciv above ppr: ", sciv_for_cell_above_ppr())
 
 
 def sciv_for_cell_below_ppr():
@@ -82,7 +87,7 @@ def sciv_for_cell_below_ppr():
     target_tpr_index = 2
     target_value = df.iloc[target_ppr_index, target_tpr_index]
     return target_value
-# print(sciv_for_cell_below_ppr())
+print("sciv below ppr: ", sciv_for_cell_below_ppr())
 
 def sciv_for_ppr_cell():
     target_ppr_index = locate_cell_with_ppr()
@@ -93,12 +98,13 @@ def sciv_for_ppr_cell():
 def compute_denominator_sciv():
     res = sciv_for_cell_above_ppr() - sciv_for_cell_below_ppr()
     return res
+print("diff btw sciv sbove and below: ", compute_denominator_sciv())
 
 def compute_the_value_of_unknown_sciv():
-    computed_ppr = sciv_for_cell_above_ppr() * (compute_denominator_sciv() * interpolated_ppr())
-    return computed_ppr
+    computed_sciv = sciv_for_cell_above_ppr() - (compute_denominator_sciv() * interpolated_ppr())
+    return computed_sciv
 
-print(compute_denominator_sciv())
+print("This the sciv: ", compute_the_value_of_unknown_sciv())
 
 
 
