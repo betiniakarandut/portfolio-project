@@ -1,11 +1,11 @@
 # Portfolio Project :fire:
-
+<p><h1>_CURRENTLY WORKING ON UPDATES:<br>AUTOMATING THE THE WHOLE PROCESS FOR BETTER AND SMOOTH USER EXPERIENCE_</h1></p>
 ## Description :house:
 
 This is my portfolio project at the end of the foundation phase in the ROADMAP to becoming a software engineer.
 In this project, I discovered a pressing need amongst the natural gas engineering students and that was calculating static bottom hole pressure of a gas well. So, I took it upon myself to come up with a kind of desktop application that can answer this need but using the SUKKAR and CORNELL integral method. This will be a very user friendly, light weight application.<br>
 
-<h2>_Stick up for updates!_<h2/>
+<p><h1>_CURRENTLY WORKING ON UPDATES:<br>AUTOMATING THE THE WHOLE PROCESS FOR BETTER AND SMOOTH USER EXPERIENCE_</h1></p>
 
 ## _installation_
 
@@ -49,6 +49,7 @@ This package requires:
 | [staticbhp.py](./static_bhp/staticbhp.py)                | module that calculates static bottom hole pressure of gas well    |
 | sukkarcornelintegral.csv                                 | A table containing integral constants at certain Tpr and Ppr      |
 
+<p><h1>_CURRENTLY WORKING ON UPDATES:<br>AUTOMATING THE THE WHOLE PROCESS FOR BETTER AND SMOOTH USER EXPERIENCE_</h1></p>
 ## Author
 
 - Github: [betiniakarandut](https://www.github.com/betiniakarandut)
