@@ -74,25 +74,73 @@ def interpolated_ppr():
 
 # locate sukkar cornell integral in the csv file
 def sciv_for_cell_above_ppr():
-    target_ppr_index = locate_cell_with_ppr() - 1
-    target_tpr_index = 2
-    target_value = df.iloc[target_ppr_index, target_tpr_index]
-    return target_value
+    # future optimization
+#     tpr_to_column = {
+#     1.5: 1,
+#     1.6: 2,
+#     1.7: 3
+# }
+
+# target_tpr_index = tpr_to_column[pseudo_reduced_temp()]
+# target_value = df.iloc[target_ppr_index, target_tpr_index]
+    try:
+        target_ppr_index = locate_cell_with_ppr() - 1
+        if not 1.5 <= pseudo_reduced_temp() <= 1.7:
+            raise ValueError("Tpr range must be between 1.5 and 1.7")
+        else:
+            if pseudo_reduced_temp() == 1.5:
+                target_tpr_index = 1
+                target_value = df.iloc[target_ppr_index, target_tpr_index]
+            elif pseudo_reduced_temp() == 1.6:
+                target_tpr_index = 2
+                target_value = df.iloc[target_ppr_index, target_tpr_index]
+            elif pseudo_reduced_temp() == 1.7:
+                target_tpr_index = 3
+                target_value = df.iloc[target_ppr_index, target_tpr_index]
+            return target_value
+    except Exception as e:
+        print(f"Error: {e}")
 # print("sciv above ppr: ", sciv_for_cell_above_ppr())
 
 
 def sciv_for_cell_below_ppr():
-    target_ppr_index = locate_cell_with_ppr() + 1
-    target_tpr_index = 2
-    target_value = df.iloc[target_ppr_index, target_tpr_index]
-    return target_value
+    try:
+        target_ppr_index = locate_cell_with_ppr() + 1
+        if not 1.5 <= pseudo_reduced_temp() <= 1.7:
+            raise ValueError("Tpr range must be between 1.5 and 1.7")
+        else:
+            if pseudo_reduced_temp() == 1.5:
+                target_tpr_index = 1
+                target_value = df.iloc[target_ppr_index, target_tpr_index]
+            elif pseudo_reduced_temp() == 1.6:
+                target_tpr_index = 2
+                target_value = df.iloc[target_ppr_index, target_tpr_index]
+            elif pseudo_reduced_temp() == 1.7:
+                target_tpr_index = 3
+                target_value = df.iloc[target_ppr_index, target_tpr_index]
+            return target_value
+    except Exception as e:
+        print(f"Error: {e}")
 # print("sciv below ppr: ", sciv_for_cell_below_ppr())
 
 def sciv_for_ppr_cell():
-    target_ppr_index = locate_cell_with_ppr()
-    target_tpr_index = 2
-    target_value = df.iloc[target_ppr_index, target_tpr_index]
-    return target_value
+    try:
+        target_ppr_index = locate_cell_with_ppr()
+        if not 1.5 <= pseudo_reduced_temp() <= 1.7:
+            raise ValueError("Tpr range must be between 1.5 and 1.7")
+        else:
+            if pseudo_reduced_temp() == 1.5:
+                target_tpr_index = 1
+                target_value = df.iloc[target_ppr_index, target_tpr_index]
+            elif pseudo_reduced_temp() == 1.6:
+                target_tpr_index = 2
+                target_value = df.iloc[target_ppr_index, target_tpr_index]
+            elif pseudo_reduced_temp() == 1.7:
+                target_tpr_index = 3
+                target_value = df.iloc[target_ppr_index, target_tpr_index]
+            return target_value
+    except Exception as e:
+        print(f"Error: {e}")
 
 def compute_denominator_sciv():
     res = sciv_for_cell_above_ppr() - sciv_for_cell_below_ppr()
@@ -103,7 +151,7 @@ def compute_the_value_of_unknown_sciv():
     computed_sciv = sciv_for_cell_above_ppr() - (compute_denominator_sciv() * interpolated_ppr())
     return computed_sciv
 
-print("This the sciv: ", compute_the_value_of_unknown_sciv())
+print("This is the sciv: ", compute_the_value_of_unknown_sciv())
 
 
 
