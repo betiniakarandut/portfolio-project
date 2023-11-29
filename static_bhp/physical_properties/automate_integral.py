@@ -1,5 +1,6 @@
 import pandas as pd
-# from conversions import evaluate_scrhs
+import numpy as np
+from conversions import evaluate_scrhs
 # from pseudocritical_properties import natural_gas_systems2
 from pseudoreduced_properties import pseudo_reduced_wellhead_pressure, pseudo_reduced_temp
 # from error_message import err_msg
@@ -151,9 +152,77 @@ def compute_the_value_of_unknown_sciv():
     computed_sciv = sciv_for_cell_above_ppr() - (compute_denominator_sciv() * interpolated_ppr())
     return computed_sciv
 
-print("This is the sciv: ", compute_the_value_of_unknown_sciv())
+# print("This is the sciv: ", compute_the_value_of_unknown_sciv())
+
+def real_sciv():
+    real_sciv = compute_the_value_of_unknown_sciv() - evaluate_scrhs()
+    return real_sciv
+# print("This is the sciv: ", compute_the_value_of_unknown_sciv())
+# print("This is the value of evaluate_schrs(): ", evaluate_scrhs())
+print('real sciv: ', real_sciv())
+
+pseudoreduced_temps = df['pseudoreduced_temp1.5', 'pseudoreduced_temp1.6', 'pseudoreduced_temp1.7']
+target_ppr = round(real_sciv(), 4)
+for pseudoreduced_temp in pseudoreduced_temps:
+    if target_ppr in pseudoreduced_temp.values:
+        print(f"Target value {target_ppr} exists in the DataFrame")
+        # Locate the cell using the index of the target value
+        target_index = pseudoreduced_temp.searchsorted(target_ppr)
+        cell_above_ppr = pseudoreduced_temp[target_index - 1]
+        cell_below_ppr = pseudoreduced_temp[target_index + 1]
+        print(f"Cell above: {cell_above_ppr}, Cell below: {cell_below_ppr}")
+    else:
+        upper_bound = pseudoreduced_temp.max()
+        lower_bound = pseudoreduced_temp.min()
+
+        if target_ppr > upper_bound:
+            print(f"Target value {target_ppr} is greater than the maximum value in the DataFrame")
+        elif target_ppr < lower_bound:
+            print(f"Target value {target_ppr} is less than the minimum value in the DataFrame")
+        else:
+            lower_index = pseudoreduced_temp.searchsorted(target_ppr)
+
+            difference = target_ppr - pseudoreduced_temp[lower_index]
+
+            estimated_upper_value = pseudoreduced_temp[lower_index] + (difference * (pseudoreduced_pressures[lower_index + 1] - pseudoreduced_pressures[lower_index]))
+
+            print(f"Estimated cell above: {estimated_upper_value}")
+            print(f"Cell below: {pseudoreduced_temp[lower_index]}")
 
 
+# # Extract the relevant columns
+# pseudoreduced_pressures = df['pseudoreduced_pressures']
+# sciv_values = df['sciv_values']
+
+# # Find the index of the cell closest to the target sciv value
+# closest_index = df['sciv_values'].searchsorted(target_sciv_value)
+
+# # Extract the corresponding pseudoreduced pressure
+# pivot_pressure = pseudoreduced_pressures[closest_index]
+
+# # Locate the row and column indices for the pivot cell
+# pivot_row_index = df.index[closest_index]
+# pivot_column_index = df.columns.get_loc('sciv_values')
+
+# # Locate the cell above and below the pivot cell in the pseudoreduced pressures column
+# cell_above_ppr = pseudoreduced_pressures[pivot_row_index - 1]
+# cell_below_ppr = pseudoreduced_pressures[pivot_row_index + 1]
+
+# # Extract the corresponding sciv values for the cells above and below the pivot
+# sciv_above = sciv_values[pivot_row_index - 1]
+# sciv_below = sciv_values[pivot_row_index + 1]
+
+# Print the results
+# print(f"Target sciv value: {target_sciv_value}")
+# print(f"Pivot pseudoreduced pressure: {pivot_pressure}")
+# print(f"Cell above: {cell_above_ppr}")
+# print(f"Cell below: {cell_below_ppr}")
+# print(f"Sciv value above: {sciv_above}")
+# print(f"Sciv value below: {sciv_below}")
+
+# def locate_sciv_above_pivot():
+
+    
 
 # print(f"Found it to be equal with the ppr above: {locate_cell_with_ppr()}")
 # isna_values = df['pseudoreduced_pressures'].isna()
