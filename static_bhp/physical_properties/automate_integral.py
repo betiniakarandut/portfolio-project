@@ -161,34 +161,37 @@ def real_sciv():
 # print("This is the value of evaluate_schrs(): ", evaluate_scrhs())
 print('real sciv: ', real_sciv())
 
-pseudoreduced_temps = df['pseudoreduced_temp1.5', 'pseudoreduced_temp1.6', 'pseudoreduced_temp1.7']
-target_ppr = round(real_sciv(), 4)
-for pseudoreduced_temp in pseudoreduced_temps:
-    if target_ppr in pseudoreduced_temp.values:
-        print(f"Target value {target_ppr} exists in the DataFrame")
-        # Locate the cell using the index of the target value
-        target_index = pseudoreduced_temp.searchsorted(target_ppr)
-        cell_above_ppr = pseudoreduced_temp[target_index - 1]
-        cell_below_ppr = pseudoreduced_temp[target_index + 1]
-        print(f"Cell above: {cell_above_ppr}, Cell below: {cell_below_ppr}")
-    else:
-        upper_bound = pseudoreduced_temp.max()
-        lower_bound = pseudoreduced_temp.min()
+closest_indices = []
+closest_columns = []
+closest_values = []
+target_sciv = round(real_sciv(), 4)
+pseudoreduced_temps = ['pseudoreduced_temp1.5', 'pseudoreduced_temp1.6', 'pseudoreduced_temp1.7']
+for target_col in pseudoreduced_temps:
+    abs_diffs = np.abs(df[target_col] - target_sciv)
+    # print(f'{abs_diffs}')
+    closest_index = abs_diffs.idxmin()
+    # print(f'the index of the closest value is {closest_index}')
+    closest_value = df[target_col][closest_index]
+    if closest_value:
+    print(f'the closest value is {closest_value}')
+    # closest_column = df.columns[abs_diffs.idxmin()]
+    
+    # closest_indices.append(closest_index)
+    # closest_columns.append(closest_column)
+    # closest_values.append(closest_value)
+# print(f"Closest indices: {closest_indices}")
+# print(f"Closest columns: {closest_columns}")
+# print(f"Closest values: {closest_value}")
 
-        if target_ppr > upper_bound:
-            print(f"Target value {target_ppr} is greater than the maximum value in the DataFrame")
-        elif target_ppr < lower_bound:
-            print(f"Target value {target_ppr} is less than the minimum value in the DataFrame")
-        else:
-            lower_index = pseudoreduced_temp.searchsorted(target_ppr)
+# Find the index of the closest value
+# closest_index = abs_diffs.idxmin()
+# # print(f'the index of the closest value is {closest_index}')
+# # Get the closest value
+# closest_value = df['pseudoreduced_temp1.5'][closest_index]
+# print(f'the closest value is {closest_value}')
 
-            difference = target_ppr - pseudoreduced_temp[lower_index]
-
-            estimated_upper_value = pseudoreduced_temp[lower_index] + (difference * (pseudoreduced_pressures[lower_index + 1] - pseudoreduced_pressures[lower_index]))
-
-            print(f"Estimated cell above: {estimated_upper_value}")
-            print(f"Cell below: {pseudoreduced_temp[lower_index]}")
-
+# # Find the index of the closest value
+# closest_index = abs_diffs.idxmin()
 
 # # Extract the relevant columns
 # pseudoreduced_pressures = df['pseudoreduced_pressures']
