@@ -204,6 +204,3 @@ def pseudo_reduced_bhp():
     reduced_bhp = ppr - (LHS * RHS_denominator)
     return round(reduced_bhp, 2)
 # print(pseudo_reduced_bhp())
-
-
-
