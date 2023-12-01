@@ -32,4 +32,4 @@ def evaluate_scrhs():
         floats: sukkar and cornell integral-RHS
     """
     scrhs = (0.01875 * float(gas_specific_gravity * well_depth)) / float(temp_avg_in_rankine())
-    return scrhs
+    return round(scrhs, 4)
