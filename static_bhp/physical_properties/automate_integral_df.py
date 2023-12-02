@@ -5,7 +5,6 @@ from pseudoreduced_properties import pseudo_reduced_wellhead_pressure, pseudo_re
 
 
 df = pd.read_csv('../sukkarcornelintegral.csv')
-df2 = pd.read_csv('../sukkarcornellintegral2.csv')
 
 def truncate_to_one_dp(digit_to_truncate):
     """Truncates a real number to 1 decimal place
@@ -203,4 +202,6 @@ def pseudo_reduced_bhp():
     RHS_denominator = ppr - cell_value_1_level_below_ppr
     reduced_bhp = ppr - (LHS * RHS_denominator)
     return round(reduced_bhp, 2)
-# print(pseudo_reduced_bhp())
+
+
+print('<-------------------------------------->')

@@ -202,7 +202,3 @@ def pseudo_reduced_bhp():
     RHS_denominator = ppr - cell_value_1_level_below_ppr
     reduced_bhp = ppr - (LHS * RHS_denominator)
     return round(reduced_bhp, 2)
-# print(pseudo_reduced_bhp())
-
-
-
