@@ -31,8 +31,8 @@ def pseudo_reduced_wellhead_pressure():
     return round(ppr1_wellhead, 3)
 
 
-input('using the values of Tpr and Ppr displayed below. Goto sukkarcornel integral'
-      'table and read the value of the CELL. Type "ok" to see Tr and Pr values- ')
+# input('using the values of Tpr and Ppr displayed below. Goto sukkarcornel integral'
+#       'table and read the value of the CELL. Type "ok" to see Tr and Pr values- ')
 
 # print('')
 # print('<-------------------------------------->')
