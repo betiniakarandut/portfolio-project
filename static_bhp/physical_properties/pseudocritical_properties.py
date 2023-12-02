@@ -44,4 +44,4 @@ def gas_condensate_systems2():
     ppc_gas_condensate_systems = 787.06 - 147.34 * gas_specific_gravity - 7.916 * gas_specific_gravity ** 2
     return ppc_gas_condensate_systems
 
-# print(gas_condensate_systems())
+# print(natural_gas_systems2())
