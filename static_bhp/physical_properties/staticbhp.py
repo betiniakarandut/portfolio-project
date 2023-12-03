@@ -19,6 +19,7 @@ class staticBHP:
         import automate_integral_df
 
         pws = automate_integral_df.pseudo_reduced_bhp() * natural_gas_systems2()
+        print(automate_integral_df.pseudo_reduced_bhp())
         return f"The static BHP is: {round(pws, 3)} psia"
     
     def staticbhp_for_ppr_lt_2(self):

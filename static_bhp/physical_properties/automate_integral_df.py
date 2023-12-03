@@ -141,7 +141,7 @@ def compute_the_value_of_unknown_sciv():
     computed_sciv = sciv_for_cell_above_ppr() - (compute_denominator_sciv() * interpolated_ppr())
     return computed_sciv
 
-# print("This is the sciv: ", compute_the_value_of_unknown_sciv())
+print("This is the sciv: ", compute_the_value_of_unknown_sciv())
 
 def pivot_sciv():
     pivot_sciv = compute_the_value_of_unknown_sciv() - evaluate_scrhs()
@@ -174,8 +174,8 @@ print(f'the closest value is {closest_value}')
 print(f'the closest index is {closest_index}')
 ppr = df['pseudoreduced_pressures'][closest_index]
 cell_value_1_level_below_ppr = df['pseudoreduced_pressures'][closest_index + 1]
-# print(f'this is ppr_1 {cell_value_1_level_below_ppr}')
-# print(f'ppr is: {ppr}')
+print(f'this is ppr_1 {cell_value_1_level_below_ppr}')
+print(f'ppr is: {ppr}')
 
 tpr_to_column = {
     1.5: 1,
@@ -199,9 +199,11 @@ def pseudo_reduced_bhp():
     numerator = cell_value_above_pivot_sciv - pivot_sciv()
     denominator = cell_value_above_pivot_sciv - cell_value_below_pivot_sciv
     LHS = numerator / denominator
+    print('LHS', LHS)
     RHS_denominator = ppr - cell_value_1_level_below_ppr
     reduced_bhp = ppr - (LHS * RHS_denominator)
     return round(reduced_bhp, 2)
+print(pseudo_reduced_bhp())
 
 
 print('<-------------------------------------->')
