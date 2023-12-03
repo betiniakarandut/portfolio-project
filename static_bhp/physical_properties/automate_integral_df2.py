@@ -1,10 +1,15 @@
+"""
+Module to automate sukkar and cornell integral
+for pseudo reduced pressure less than 2 or 
+wellhead pressure less than 2000 psia
+"""
 import pandas as pd
 import numpy as np
 from conversions import evaluate_scrhs
 from pseudoreduced_properties import pseudo_reduced_wellhead_pressure, pseudo_reduced_temp
 
-
 df2 = pd.read_csv('../sukkarcornellintegral2.csv')
+
 
 def truncate_to_one_dp(digit_to_truncate):
     """Truncates a real number to 1 decimal place
@@ -27,17 +32,12 @@ def print_target_pseudoreduced_pressure():
     target_pseudoreduced_pressure = pseudo_reduced_wellhead_pressure()
     return truncate_to_one_dp(target_pseudoreduced_pressure)
 
-# print_target_pseudoreduced_pressure()
     
 def locate_cell_with_ppr():
     target_ppr = print_target_pseudoreduced_pressure()
-    # print(target_ppr)
     find_ppr = df2["pseudoreduced_pressures"].searchsorted(target_ppr)
-    
-    # if find_ppr < 0 or find_ppr >= len(df2):
-    #     return None
-    # found_ppr = df2['pseudoreduced_pressures'][find_ppr]
     return find_ppr
+
 
 print('')
 print('<-------------------------------------->')
@@ -48,9 +48,9 @@ print('')
 
 
 # locate cell value above and below ppr
-
 cell_below_ppr = locate_cell_with_ppr() + 1
 print(cell_below_ppr)
+
 
 def value_of_cell_above_ppr():
     cell_above_ppr = locate_cell_with_ppr() - 1
@@ -63,12 +63,14 @@ def value_of_cell_below_ppr():
     return df2['pseudoreduced_pressures'][cell_below_ppr]
 print("This cell above ppr: ", value_of_cell_below_ppr())
 
+
 def interpolated_ppr():
     value_1 = value_of_cell_above_ppr() - pseudo_reduced_wellhead_pressure()
     value_2 = value_of_cell_above_ppr() - value_of_cell_below_ppr()
     res = value_1 / value_2
     return res
 print("The cal ppr is: ", interpolated_ppr())
+
 
 # locate sukkar cornell integral in the csv file
 def sciv_for_cell_above_ppr():
@@ -135,13 +137,12 @@ def sciv_for_ppr_cell():
 def compute_denominator_sciv():
     res = sciv_for_cell_above_ppr() - sciv_for_cell_below_ppr()
     return res
-# print("diff btw sciv sbove and below: ", compute_denominator_sciv())
+
 
 def compute_the_value_of_unknown_sciv():
     computed_sciv = sciv_for_cell_above_ppr() - (compute_denominator_sciv() * interpolated_ppr())
     return computed_sciv
 
-# print("This is the sciv: ", compute_the_value_of_unknown_sciv())
 
 def pivot_sciv():
     pivot_sciv = compute_the_value_of_unknown_sciv() - evaluate_scrhs()
@@ -153,16 +154,15 @@ def pivot_sciv():
 
 if pseudo_reduced_temp() == 1.5:
 
-# target_index = tpr_to_column[pseudo_reduced_temp()]
     abs_diffs = np.abs(df2['pseudoreduced_temp1.5'] - pivot_sciv())
     closest_index = abs_diffs.idxmin()
     closest_value = df2['pseudoreduced_temp1.5'][closest_index]
-    # print(f'the closest value is {closest_value}')
+
 elif pseudo_reduced_temp() == 1.6:
     abs_diffs = np.abs(df2['pseudoreduced_temp1.6'] - pivot_sciv())
     closest_index = abs_diffs.idxmin()
     closest_value = df2['pseudoreduced_temp1.6'][closest_index]
-    # print(f'the closest value is {closest_value}')
+
 elif pseudo_reduced_temp() == 1.7:
     abs_diffs = np.abs(df2['pseudoreduced_temp1.7'] - pivot_sciv())
     closest_index = abs_diffs.idxmin()
@@ -188,6 +188,7 @@ cell_value_below_pivot_sciv = df2.iloc[closest_index - 1, target_tpr_index]
 # print(f'target_tpr_index is {target_tpr_index} and ppr_index is {closest_index} 
     #   and sciv is {cell_value_above_pivot_sciv} & {cell_value_below_pivot_sciv}')
 
+
 def pseudo_reduced_bhp():
     """Function to compute reduced
     bottom hole pressure
@@ -201,4 +202,7 @@ def pseudo_reduced_bhp():
     LHS = numerator / denominator
     RHS_denominator = ppr - cell_value_1_level_below_ppr
     reduced_bhp = ppr - (LHS * RHS_denominator)
-    return round(reduced_bhp, 2)
+    return round(reduced_bhp, 1)
+
+
+print('<-------------------------------------->')

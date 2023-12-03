@@ -3,7 +3,6 @@
 well_depth = float(input('What is the well depth? '))
 
 # Temperature Conversion From Fahrenheit To Rankine
-
 temp_avg_sys = float(input('what is the average temp in fahrenheit? '))
 
 

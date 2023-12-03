@@ -19,7 +19,7 @@ def natural_gas_systems2():
     Return:
         floats: pseudocritical pressure
     """
-    ppc_natural_gas_systems = 709.604 - (58.718 * gas_specific_gravity) + (2.15*gas_specific_gravity**2)
+    ppc_natural_gas_systems = 709.604 - (58.718 * gas_specific_gravity) + (3.015*gas_specific_gravity**2)
     return ppc_natural_gas_systems
 
 
@@ -43,6 +43,3 @@ def gas_condensate_systems2():
     """
     ppc_gas_condensate_systems = 787.06 - 147.34 * gas_specific_gravity - 7.916 * gas_specific_gravity ** 2
     return ppc_gas_condensate_systems
-
-print(natural_gas_systems())
-print(natural_gas_systems2())

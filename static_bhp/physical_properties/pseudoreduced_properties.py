@@ -3,8 +3,6 @@ from conversions import temp_avg_in_rankine
 from pseudocritical_properties import natural_gas_systems, natural_gas_systems2
 
 # COMPUTING PSEUDOREDUCED PROPERTIES
-# gas_type = input('type in a gas system:Natural gas system or gas condensate system? ')
-# if (gas_type == 'Natural gas system'):
 def pseudo_reduced_temp():
     """Function to compute reduced temperature
 
