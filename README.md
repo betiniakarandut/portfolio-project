@@ -6,9 +6,11 @@ This is my portfolio project at the end of the foundation phase in the ROADMAP t
 In this project, I discovered a pressing need amongst the natural gas engineering students and that was calculating static bottom hole pressure of a gas well. So, I took it upon myself to come up with a kind of desktop application that can answer this need but using the SUKKAR and CORNELL integral method. This will be a very user friendly, light weight application.<br>
 
 <p><h1>_CURRENTLY WORKING ON UPDATES:<br>AUTOMATION COMPLETED and INTO UI OR DESKTOP APPLICATION :fire:_</h1></p>
-
+<h2>After Automation</h2>
 <p><img src="./assets/automation.png"/></p>
 
+<h2>Before Automation</h2>
+<p><img src="./assets/bhppackage.png"/></p>
 
 ## _installation_
 
