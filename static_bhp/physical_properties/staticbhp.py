@@ -35,10 +35,13 @@ class staticBHP:
 
     def print_staticbhp(self):
 
-        if pseudo_reduced_wellhead_pressure() < 2.0:
-            return self.staticbhp_for_ppr_lt_2()
-        else:
-            return self.staticbhp_for_ppr_gt_2()
+        try:
+            if pseudo_reduced_wellhead_pressure() < 2.0:
+                return self.staticbhp_for_ppr_lt_2()
+            else:
+                return self.staticbhp_for_ppr_gt_2()
+        except Exception as e:
+            print(f'Error: No index found. {e}')
 
 
 sbhp = staticBHP()
