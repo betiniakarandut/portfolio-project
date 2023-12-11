@@ -1,16 +1,27 @@
-<!-- templates/index.html -->
-<form action="/estimate" method="post">
-    <label for="well_depth">Well Depth:</label>
-    <input type="text" name="well_depth" required><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physical Properties Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Physical Properties Calculator</h1>
+    <form action="{{ url_for('physical_properties.calculate_properties') }}" method="post">
+        <label for="well_depth">Well Depth:</label>
+        <input type="text" name="well_depth" required>
 
-    <label for="average_temperature_in_fahrenheit">Average Temperature In Fahrenheit:</label>
-    <input type="text" name="average_temperature_in_fahrenheit" required><br>
+        <label for="temp_avg_sys">Average Temperature (Fahrenheit):</label>
+        <input type="text" name="temp_avg_sys" required>
 
-    <label for="specific_gas_gravity">Specific Gas Gravity:</label>
-    <input type="text" name="specific_gas_gravity" required><br>
+        <label for="gas_specific_gravity">Gas Specific Gravity:</label>
+        <input type="text" name="gas_specific_gravity" required>
 
-    <label for="wellhead_pressure">Wellhead Pressure:</label>
-    <input type="text" name="wellhead_pressure" required><br>
+        <label for="static_wellhead_pressure">Wellhead Pressure (psia):</label>
+        <input type="text" name="static_wellhead_pressure" required>
 
-    <input type="submit" value="Calculate">
-</form>
+        <button type="submit">Calculate</button>
+    </form>
+</body>
+</html>

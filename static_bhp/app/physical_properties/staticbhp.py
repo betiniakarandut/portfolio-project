@@ -1,50 +1,36 @@
 from .pseudocritical_properties import natural_gas_systems2
-from .pseudoreduced_properties import pseudo_reduced_wellhead_pressure
 from .automate_integral_df import pseudo_reduced_bhp
 from .automate_integral_df2 import pseudo_reduced_bhp2
-# from error_message import err_msg
 
-
-class staticBHP:
-
-    def staticbhp_for_ppr_gt_2(self):
-        """Function to compute the
-        Static Bottom Hole Pressure
+class StaticBHP:
+    @staticmethod
+    def staticbhp_for_ppr_gt_2(reduced_temp, reduced_pressure, scrhs, gas_specific_gravity):
+        """Function to compute the Static Bottom Hole Pressure
+        when pseudo_reduced_wellhead_pressure is greater than or equal to 2.0
 
         Return:
-            pws(floats): The static BHP rounded to 3
-            decimal places
-
+            pws(floats): The static BHP rounded to 3 decimal places
         """
-
-        pws = pseudo_reduced_bhp() * natural_gas_systems2()
+        pws = pseudo_reduced_bhp(reduced_temp, reduced_pressure, scrhs) * natural_gas_systems2(gas_specific_gravity)
         return f"The static BHP is: {round(pws, 3)} psia"
-    
-    def staticbhp_for_ppr_lt_2(self):
-        """Function to compute the
-        Static Bottom Hole Pressure
+
+    @staticmethod
+    def staticbhp_for_ppr_lt_2(reduced_temp, reduced_pressure, scrhs, gas_specific_gravity):
+        """Function to compute the Static Bottom Hole Pressure
+        when pseudo_reduced_wellhead_pressure is less than 2.0
 
         Return:
-            pws(floats): The static BHP rounded to 3
-            decimal places
-
+            pws(floats): The static BHP rounded to 3 decimal places
         """
-
-        pws = pseudo_reduced_bhp2() * natural_gas_systems2()
+        pws = pseudo_reduced_bhp2(reduced_temp, reduced_pressure, scrhs) * natural_gas_systems2(gas_specific_gravity)
         return f"The static BHP is: {round(pws, 3)} psia"
 
-    def print_staticbhp(self):
-
+    @staticmethod
+    def print_staticbhp(reduced_temp, reduced_pressure, scrhs, gas_specific_gravity):
         try:
-            if pseudo_reduced_wellhead_pressure() >= 2.0:
-                return self.staticbhp_for_ppr_gt_2()
-            elif pseudo_reduced_wellhead_pressure() < 2.0:
-                return self.staticbhp_for_ppr_lt_2()
+            if reduced_pressure >= 2.0:
+                return StaticBHP.staticbhp_for_ppr_gt_2(reduced_temp, reduced_pressure, scrhs, gas_specific_gravity)
+            elif reduced_pressure < 2.0:
+                return StaticBHP.staticbhp_for_ppr_lt_2(reduced_temp, reduced_pressure, scrhs, gas_specific_gravity)
         except Exception as e:
-            print(f'Error: No index found. {e}')
-
-
-# sbhp = staticBHP()
-# print('')
-# print(sbhp.print_staticbhp())
-# print('<-------------------------------------->')
+            return f'Error: {e}'

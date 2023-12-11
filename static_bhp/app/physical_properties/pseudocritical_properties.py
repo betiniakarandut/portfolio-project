@@ -1,7 +1,4 @@
-"""Module for computing pseudo critical properties of gas well"""
-from .conversions import gas_specific_gravity
-
-def natural_gas_systems():
+def natural_gas_systems(gas_specific_gravity):
     """Function to calculate pseudocritical
     temperature of gas
 
@@ -12,7 +9,7 @@ def natural_gas_systems():
     return tpc_natural_gas_systems
 
 
-def natural_gas_systems2():
+def natural_gas_systems2(gas_specific_gravity):
     """Function to calculate pseudocritical
     pressure of gas
 
@@ -23,7 +20,7 @@ def natural_gas_systems2():
     return ppc_natural_gas_systems
 
 
-def gas_condensate_systems():
+def gas_condensate_systems(gas_specific_gravity):
     """Function to calculate pseudocritical
     temperature in gas condensate systems
 
@@ -34,7 +31,7 @@ def gas_condensate_systems():
     return tpc_gas_condensate_systems
 
 
-def gas_condensate_systems2():
+def gas_condensate_systems2(gas_specific_gravity):
     """Function to compute pseudocritical
     pressure in gas condensate systems
 

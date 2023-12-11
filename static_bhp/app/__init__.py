@@ -1,5 +1,11 @@
 from flask import Flask
 
-app = Flask(__name__)
+def create_app():
+    app = Flask(__name__)
 
-from app import views
+    # Configurations, extensions, and other setup can go here
+
+    from .views import physical_properties
+    app.register_blueprint(physical_properties)
+
+    return app

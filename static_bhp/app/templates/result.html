@@ -1,3 +1,28 @@
-<!-- templates/result.html -->
-<h1>Result</h1>
-<p>{{ result }}</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Calculation Result</h1>
+    <p>Static Wellhead Pressure: {{ static_wellhead_pressure }}</p>
+    <p>Sukkar and Cornell Integral RHS: {{ scrhs }}</p>
+    <p>Pseudo-Reduced Temperature: {{ reduced_temp }}</p>
+    <p>Pseudo-Reduced Wellhead Pressure: {{ reduced_pressure }}</p>
+    <p>Pseudocritical Temperature (Natural Gas Systems): {{ tpc_natural_gas_systems }}</p>
+    <p>Pseudocritical Pressure (Natural Gas Systems): {{ ppc_natural_gas_systems }}</p>
+    <p>pseudo_reduced_bhp: {{ pseudo_reduced_bhp }}</p>
+    <p>check truncated ppr: {{ check }}</p>
+    <p>locate cell with ppr: {{ locate_ppr }}</p>
+    <p>ppr value: {{ ppr_value}}</p>
+    <p>interpolated value: {{ interpolated }}</p>
+    <p>deno_sciv value: {{ deno_sciv }}</p>
+    <p>pivot_sciv value: {{ pivot_sci }}</p>
+    <p>unknown_sciv value: {{ unknown_sciv }}</p>
+    <p>Static BHP Result: {{ static_bhp_result }}</p>
+
+</body>
+</html>
