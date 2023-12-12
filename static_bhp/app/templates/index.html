@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Physical Properties Calculator</title>
+    <title>Physical Properties</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Physical Properties Calculator</h1>
+    <h1>Physical Properties of The Gas Well</h1>
     <form action="{{ url_for('physical_properties.calculate_properties') }}" method="post">
-        <label for="well_depth">Well Depth:</label>
-        <input type="text" name="well_depth" required>
+        <p><label for="well_depth">Well Depth:</label>
+        <input type="text" name="well_depth" required></p>
 
-        <label for="temp_avg_sys">Average Temperature (Fahrenheit):</label>
-        <input type="text" name="temp_avg_sys" required>
+        <p><label for="temp_avg_sys">Average Temperature (Fahrenheit):</label>
+        <input type="text" name="temp_avg_sys" required></p>
 
-        <label for="gas_specific_gravity">Gas Specific Gravity:</label>
-        <input type="text" name="gas_specific_gravity" required>
+        <p><label for="gas_specific_gravity">Gas Specific Gravity:</label>
+        <input type="text" name="gas_specific_gravity" required></p>
 
-        <label for="static_wellhead_pressure">Wellhead Pressure (psia):</label>
-        <input type="text" name="static_wellhead_pressure" required>
+        <p><label for="static_wellhead_pressure">Wellhead Pressure (psia):</label>
+        <input type="text" name="static_wellhead_pressure" required></p>
 
         <button type="submit">Calculate</button>
     </form>

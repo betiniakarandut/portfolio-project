@@ -20,5 +20,11 @@ def pseudo_reduced_wellhead_pressure(static_wellhead_pressure, gas_specific_grav
         floats: reduced pressure at wellhead rounded
         to three decimal places
     """
-    ppr1_wellhead = static_wellhead_pressure / natural_gas_systems2(gas_specific_gravity)
-    return round(ppr1_wellhead, 3)
+    try:
+        if static_wellhead_pressure <= 0:
+            raise ValueError("Static wellhead pressure is not valid")
+        else:
+            ppr1_wellhead = static_wellhead_pressure / natural_gas_systems2(gas_specific_gravity)
+            return round(ppr1_wellhead, 3)
+    except Exception as e:
+        print(f"Error: Enter a valid wellhead pressure ==> {e}")
